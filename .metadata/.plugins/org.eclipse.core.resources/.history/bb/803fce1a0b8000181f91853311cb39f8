@@ -1,0 +1,259 @@
+package comp1451.assignment0.darrenlupul;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+
+
+public class Skunk {
+	
+	private int playerTotalScore;
+	private int computerTotalScore;
+	private int playerRoundScore;
+	private int computerRoundScore;
+	private int gameRound;
+	private int[] roundPlayerFinalScores = new int[5];
+	private int[] roundComputerFinalScores = new int[5];
+	private boolean playerPlaying;
+	private boolean computerPlaying;
+	
+	
+	
+	public Skunk() {
+		
+		this.playerTotalScore = 0;
+		this.computerTotalScore = 0;
+		this.playerRoundScore = 0;
+		this.computerRoundScore = 0;
+		this.gameRound = 1;
+		this.playerPlaying = true;
+		this.computerPlaying = true; 
+				
+	}	
+	
+
+	public void GameSetup() {
+		
+		System.out.println("\t\tSKUNK game");
+		System.out.println("\t\t==========");
+		System.out.println(" ");
+		System.out.println(" ");
+		
+
+		GamePlay();
+
+
+
+		
+	}
+	
+	
+
+	public void GamePlay() {
+		
+
+		
+		//we will do 5 rounds for each of S-K-U-N-K
+		for (int round = 1; round < 6; round++) {
+			this.gameRound = round;
+
+			//initial beginning of each round
+			this.playerRoundScore = 0;
+			this.computerRoundScore = 0;
+			this.playerPlaying = true;
+			this.computerPlaying = true;
+
+
+			
+			//while either player is still playing the round
+			while ((playerPlaying == true) || (computerPlaying == true)) {
+			playerInput();
+			System.out.println("back from player input");
+			FigureOutRoll();
+			System.out.println("back from figure out roll");
+			displayScores();
+			}
+			//round is over update scores
+			updateScores();
+			displayScores();
+			
+			if ( round == 5 ) {
+				//the game is over
+				gameOverDisplay();
+				System.exit(0);
+			}
+			
+
+			
+		}
+		
+	}
+	
+	
+	public void updateScores() {
+		
+		roundPlayerFinalScores[gameRound-1] = playerRoundScore;
+		roundComputerFinalScores[gameRound-1] = computerRoundScore;
+		
+		
+	}
+	
+	public void displayScores() {
+		
+		playerTotalScore = 0;
+		computerTotalScore = 0;
+		for (int i = 1; i <= gameRound; i++) {
+			playerTotalScore = playerTotalScore + roundPlayerFinalScores[gameRound-1];
+			computerTotalScore = computerTotalScore + roundComputerFinalScores[gameRound-1];
+		}
+		playerTotalScore = playerTotalScore + playerRoundScore;
+		computerTotalScore = computerTotalScore + computerRoundScore;
+		
+		System.out.println();
+		System.out.print("This is round "+gameRound+" of 5 rounds.");
+		System.out.println("Player is playing? " + playerPlaying + ". Computer is playing? " + computerPlaying + ".");
+		System.out.println("You have " + playerRoundScore + " round score for a total score of " + playerTotalScore);
+		System.out.println("Computer has " + computerRoundScore + " round score for a total score of " + computerTotalScore);
+		System.out.println();
+		
+	}
+	
+	
+	public void gameOverDisplay() {
+		
+		System.out.println();
+		System.out.print("The game is over");
+		System.out.println();
+		System.out.println("You have a total score of " + playerTotalScore);
+		System.out.println("Computer has a total score of " + computerTotalScore);
+		System.out.println();
+		
+	}
+	
+	public void playerInput() {
+		
+		Scanner s = new Scanner(System.in);
+		char input = 0;
+		
+		System.out.println(playerPlaying + "heeere");
+		
+		//player hasn't stayed yet, get inputs and change status
+		if (playerPlaying == true) {
+			while ((input != 's') && (input != 'r')) {
+				System.out.println("Enter lower case s to stay, r to continue rolling, then press Enter");
+				input = s.next().trim().charAt(0);
+				System.out.println("test spot1");	
+			
+				if (input == 's') {
+					playerPlaying = false;
+					System.out.println("testspot3");	
+					break;  //check if this is breaking the while loop or just the if statement
+				}
+				
+				System.out.println("test spot2");	
+				
+				System.out.println(input);
+			}
+		}
+		
+		if (playerPlaying == false) {
+			System.out.println("You have stayed on round score of " + playerRoundScore);
+			System.out.println("Press any key and Enter to continue");
+			s.next();
+			System.out.println("ohYAAA");
+			
+		}
+		System.out.println("sadjfasdljfdsf");
+		
+		if (computerPlaying == true) {
+			//randomly decide whether computer will continue or will stay
+			int randomRoll = Dice.getDieRoll();
+			
+			//1 in 6 chance computer will decide to stay
+			if (randomRoll == 1) {
+				computerPlaying = false;
+				System.out.println("Computer has stayed on round score of " + computerRoundScore);
+			}
+			
+			System.out.println("computer is playing?" + computerPlaying);
+			
+			
+		}
+	
+	
+	System.out.println("dooooone");
+		
+		
+	}
+	
+
+	
+	public void FigureOutRoll() {
+		
+		int die1=Dice.getDieRoll();
+		int die2=Dice.getDieRoll();
+		int die3=Dice.getDieRoll();
+		
+		System.out.println(die1+" "+die2+" "+die3+" "+gameRound);
+		
+	
+			if (die1 + die2 + die3 == 3) {
+				if (playerPlaying) {
+					playerRoundScore = playerRoundScore + 100;
+				}
+				if (computerPlaying) {
+					computerRoundScore = computerRoundScore + 100;
+				}
+			return;
+			}
+			
+			if (((die1 == 1)&&(die2 == 1)) || ((die2 == 1)&&(die3 == 1)) || ((die1 == 1)&&(die3 == 1)))
+					{
+					if (playerPlaying) {
+						playerRoundScore = 0;
+						playerTotalScore = 0;						
+						Arrays.fill(roundPlayerFinalScores, 0);
+						playerPlaying = false;
+					}
+					if (computerPlaying) {
+						computerRoundScore = 0;
+						Arrays.fill(roundComputerFinalScores, 0);
+						computerPlaying = false;
+					}
+				return;
+				}
+
+			
+			
+			
+			if ((die1 == 1) || (die2 == 1) || (die3 == 1)) {
+				if (playerPlaying) {
+					playerRoundScore = 0;
+					playerPlaying = false;
+				}
+				if (computerPlaying) {
+					computerRoundScore = 0;
+					computerPlaying = false;
+				}
+				return;
+			}
+			
+			if (playerPlaying) {
+				playerRoundScore = playerRoundScore + die1 + die2 + die3;
+				
+			}
+			if (computerPlaying) {
+				computerRoundScore = computerRoundScore + die1 + die2 + die3;
+			}
+			return;
+		}
+			
+			
+	}
+					
+			
+
+		
+	
+	
+

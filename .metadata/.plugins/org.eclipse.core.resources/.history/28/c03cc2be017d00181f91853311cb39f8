@@ -1,0 +1,16 @@
+package comp1451.assignment0.darrenlupul;
+
+public class Main {
+
+	public static void main(String[] args) {
+	
+		// call a new Skunk game
+		Skunk skunk = new Skunk();
+		
+		skunk.GameSetup();
+		
+
+
+	}
+
+}

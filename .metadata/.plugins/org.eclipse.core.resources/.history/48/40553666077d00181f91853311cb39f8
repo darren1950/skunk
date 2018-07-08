@@ -1,0 +1,96 @@
+package comp1451.assignment0.darrenlupul;
+
+import java.util.Scanner;
+
+public class Skunk {
+	
+	private static int playerTotalScore;
+	private static int computerTotalScore;
+	private static int playerRoundScore;
+	private static int computerRoundScore;
+	private static int gameRound;
+	
+	
+	public Skunk() {
+		
+		playerTotalScore = 0;
+		computerTotalScore = 0;
+		playerRoundScore = 0;
+		computerRoundScore = 0;
+		gameRound = 1;
+				
+	}	
+	
+	public void GameSetup() throws InterruptedException {
+		
+		System.out.println("\t\tSKUNK game");
+		System.out.println("\t\t==========");
+		System.out.println(" ");
+		
+		System.out.println("Enter S to stay, R to continue");
+		System.out.println(" ");
+		
+
+		//GamePlay();
+		TestSomeOutput();
+
+		
+		
+	}
+	
+	
+	public void TestSomeOutput() throws InterruptedException {
+		
+		Runtime.getRuntime().exec("cls");
+		
+		System.out.print("hello");
+		try {
+		    Thread.sleep(4000);                 //1000 milliseconds is one second.
+		} catch(InterruptedException ex) {
+		    Thread.currentThread().interrupt();
+		}
+		System.out.print("\b \b");
+		System.out.print("world");
+	}
+	
+	public void GamePlay() {
+		
+		//we will do 5 rounds for each of S-K-U-N-K
+		for (int round = 1; round < 6; round++) {
+			Skunk.gameRound = round;
+			
+			System.out.println("This is round "+round+" of 5 rounds");
+			System.out.print("You have " + playerRoundScore + " round score for a total score of " + playerTotalScore);
+			System.out.print("Computer has " + computerRoundScore + " round score for a total score of " + computerTotalScore);
+			FigureOutRoll();
+		}
+		
+	}
+	
+	
+	public void GameDisplayAndInput() {
+		
+		
+	}
+	
+	public void GameScoreCalculation() {
+		
+		
+		
+		
+	}
+	
+
+	
+	public void FigureOutRoll() {
+		
+		int die1=Dice.getDieRoll();
+		int die2=Dice.getDieRoll();
+		int die3=Dice.getDieRoll();
+		
+		System.out.println(die1+" "+die2+" "+die3+" "+gameRound);
+		
+		
+	}
+	
+}

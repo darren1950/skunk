@@ -1,0 +1,18 @@
+package comp1451.assignment0.darrenlupul;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		System.out.printf("%s%n","farting");
+	
+		// call a new Skunk game
+		Skunk skunk = new Skunk();
+		
+		skunk.GameSetup();
+		
+
+
+	}
+
+}

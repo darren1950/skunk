@@ -1,0 +1,104 @@
+package comp1451.assignment0.darrenlupul;
+
+import java.util.Scanner;
+
+
+
+public class Skunk {
+	
+	private int playerTotalScore;
+	private int computerTotalScore;
+	private int playerRoundScore;
+	private int computerRoundScore;
+	private int gameRound;
+	
+	
+	public Skunk() {
+		
+		this.playerTotalScore = 0;
+		this.computerTotalScore = 0;
+		this.playerRoundScore = 0;
+		this.computerRoundScore = 0;
+		this.gameRound = 1;
+				
+	}	
+	
+	public void GameSetup() {
+		
+		System.out.println("\t\tSKUNK game");
+		System.out.println("\t\t==========");
+		System.out.println(" ");
+		
+		System.out.println("Enter S to stay, R to continue");
+		System.out.println(" ");
+		
+
+		GamePlay();
+
+
+		
+		
+	}
+	
+	
+
+	public void GamePlay() {
+		
+		Scanner s = new Scanner(System.in);
+		
+		//we will do 5 rounds for each of S-K-U-N-K
+		for (int round = 1; round < 6; round++) {
+			this.gameRound = round;
+			char input = 0;
+
+			
+			//begin round, initialize round score to zero
+			System.out.println("This is round "+round+" of 5 rounds");
+			this.playerRoundScore = 0;
+			this.computerRoundScore = 0;
+			System.out.println("You have " + playerRoundScore + " round score for a total score of " + playerTotalScore);
+			System.out.println("Computer has " + computerRoundScore + " round score for a total score of " + computerTotalScore);
+			System.out.println();
+
+			
+			
+			
+			//get input and check input for validity
+			while ((input != 's') && (input != 'r')) {
+					System.out.println("Enter s to stay, r to continue, then press Enter");
+					input = s.next().trim().charAt(0);
+			}
+			System.out.println(input);
+
+			FigureOutRoll();
+		}
+		
+	}
+	
+	
+	public void GameDisplayAndInput() {
+		
+		
+	}
+	
+	public void GameScoreCalculation() {
+		
+		
+		
+		
+	}
+	
+
+	
+	public void FigureOutRoll() {
+		
+		int die1=Dice.getDieRoll();
+		int die2=Dice.getDieRoll();
+		int die3=Dice.getDieRoll();
+		
+		System.out.println(die1+" "+die2+" "+die3+" "+gameRound);
+		
+		
+	}
+	
+}

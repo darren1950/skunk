@@ -1,0 +1,10 @@
+package comp1451.assignment0.darrenlupul;
+
+public class Skunk {
+	
+	public Skunk() {
+
+	System.out.println("The dice roll is " + Dice.getDieRoll());
+	}	
+	
+}

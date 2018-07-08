@@ -1,0 +1,63 @@
+package comp1451.assignment0.darrenlupul;
+
+import java.util.Scanner;
+
+public class Skunk {
+	
+	private static int playerTotalScore;
+	private static int computerTotalScore;
+	private static int playerRoundScore;
+	private static int computerRoundScore;
+	
+	
+	public Skunk() {
+		
+		playerTotalScore = 0;
+		computerTotalScore = 0;
+		playerRoundScore = 0;
+		computerRoundScore = 0;
+				
+	}	
+	
+	public void GameSetup() {
+		
+		System.out.println("\t\tSKUNK game");
+		System.out.println("\t\t==========");
+		System.out.println(" ");
+		
+		System.out.println("Enter S to stay, R to continue");
+		System.out.println(" ");
+		
+
+		
+		
+
+		
+		
+		
+		System.out.print("The dice roll is " + Dice.getDieRoll());
+
+		
+		
+	}
+	
+	public void GamePlay() {
+		
+		for (int round = 1; round < 6; round++) {
+			System.out.println("the loop is at"+round);
+		}
+		
+	}
+	
+	public void FigureOutRoll() {
+		
+		int die1=Dice.getDieRoll();
+		int die2=Dice.getDieRoll();
+		int die3=Dice.getDieRoll();
+		
+		System.out.println(die1+" "+die2+" "+die3+" "+round);
+		
+		
+	}
+	
+}

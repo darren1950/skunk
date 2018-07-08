@@ -1,0 +1,26 @@
+package comp1451.assignment0.darrenlupul;
+
+public class Skunk {
+	
+	private static int playerTotalScore;
+	private static int computerTotalScore;
+	private static int playerRoundScore;
+	private static int computerRoundScore;
+	
+	
+	public Skunk() {
+		
+		playerTotalScore = 0;
+		computerTotalScore = 0;
+		playerRoundScore = 0;
+		computerRoundScore = 0;
+				
+	}	
+	
+	public void GameSetup() {
+		
+		System.out.println("The dice roll is " + Dice.getDieRoll());
+		
+	}
+	
+}

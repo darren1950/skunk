@@ -1,0 +1,12 @@
+package comp1451.assignment0.darrenlupul;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("The dice roll is " + Dice.getDieRoll());
+
+	}
+
+}
